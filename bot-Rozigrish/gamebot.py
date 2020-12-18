@@ -132,7 +132,7 @@ def callback(call):
         except Exception:
             bot.send_message(chat_id = call.message.chat.id, text =  "Не являюсь администратором какнала/чата либо нет такого канала/чата")
     elif call.data == db.get_chnal_and_text()[0][-1]:
-        url = f'https://api.telegram.org/bot1476829170:AAGiOgA0R64w3qR9ID-ESH7wrHB8B8GXEM4/getChatMember?chat_id={call.message.chat.id}&user_id={call.from_user.id}'
+        url = f'https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={call.message.chat.id}&user_id={call.from_user.id}'
         req = requests.get(url).json()
         if req['result']['status'] == "member" or  req['result']['status'] == "creator":
             g = req['result']['user']['id'], '@' + req['result']['user']['username'], call.message.message_id, f"{call.message.chat.id}"
